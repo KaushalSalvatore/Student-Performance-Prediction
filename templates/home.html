@@ -1,0 +1,98 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Student Performance</title>
+        <link href="static/css/main.css" rel="stylesheet" media="all">
+        <link href="static/css/dialog.css" rel="stylesheet" media="all">
+
+         
+    </head>
+<body>
+    <div id="contact-form">
+        <div>
+          <h1>Student Exam Performance Prediction!!!!!</h1> 
+        </div>
+      
+            <form action="{{ url_for('predict_datapoint')}}" method="post">
+            <div>             
+                  <select id="margin-top--28" name="gender" tabindex="4" placeholder="Enter you Gender" required>   
+                    <option class="placeholder" selected disabled value="">Select your Gender</option>
+                    <option value="male">Male</option>
+                     <option value="female">Female</option>  
+                  </select>
+             </div>
+
+             <div>             
+                <select class="padding-top--48" name="ethnicity" tabindex="4" placeholder="Enter Ethnicity" required>   
+                  <option class="placeholder" selected disabled value="">Select Ethnicity</option>
+                  <option value="group A">Group A</option>
+                  <option value="group B">Group B</option>
+                  <option value="group C">Group C</option>
+                  <option value="group D">Group D</option>
+                  <option value="group E">Group E</option>
+                </select>
+           </div>
+
+           <div>             
+            <select class="padding-top--48"  name="parental_level_of_education" tabindex="4" placeholder="Enter Parental Level of Education" required>   
+              <option class="placeholder" selected disabled value="">Select Parental Level of Education</option>
+              <option value="associate's degree">associate's degree</option>
+                <option value="bachelor's degree">bachelor's degree</option>
+                <option value="high school">high school</option>
+                <option value="master's degree">master's degree</option>
+                <option value="some college">some college</option>
+                <option value="some high school">some high school</option>
+            </select>
+            </div>
+
+            <div>             
+                <select class="padding-top--48" name="lunch" placeholder="Enter you Lunch" tabindex="4" placeholder="Select Lunch Type" required>   
+                  <option class="placeholder" selected disabled value="">Select Lunch Type</option>
+                  <option value="free/reduced">free/reduced</option>
+                <option value="standard">standard</option>
+                </select>
+           </div>
+
+           <div>             
+            <select class="padding-top--48" name="test_preparation_course" tabindex="4"  placeholder="Select Test preparation Course" required>   
+              <option class="placeholder" selected disabled value="">Select Test preparation Course</option>
+              <option value="none">None</option>
+               <option value="completed">Completed</option>  
+            </select>
+            </div>
+
+            <div>
+                <label for="name">
+                  <input type="number" name="reading_score" placeholder="Enter your Reading score" min='0' max='100' required="required" tabindex="1"/>
+                </label> 
+            </div>
+
+            <div>
+                <label for="name">
+                  <input type="number" name="writing_score" placeholder="Enter your Writing Score" min='0' max='100' required="required" tabindex="1" />
+                </label> 
+            </div>
+
+            <div>              
+                <button name="submit" type="submit" id="submit" >Get Math Score Result</button> 
+            </div>
+          </form>
+        </div>
+        {% if results %}
+            <div id="centerpoint">
+                <div id="dialog"></div>
+                <div class="popup">
+                    <button id="close">&times;</button>
+                    <h3>Student Math Score prediction</h3>
+                    <br>
+                    <b>{{results}}</b>
+                    <br>
+                    <br>
+                    <a href="/">Back to Home</a>
+                </div>
+        
+            </div>
+          {% endif %}
+          <script src="static/js/dialog.js"></script>
+</body>          
+</html>
